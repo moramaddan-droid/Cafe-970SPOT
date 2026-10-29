@@ -1,0 +1,6 @@
+{
+  "name": "970SPOT+ Cafe",
+  "description": "الموقع الرسمي لكافيه 970SPOT+ في المنصورة، مصر - قهوة مختصة وأجواء فلسطينية مميزة",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

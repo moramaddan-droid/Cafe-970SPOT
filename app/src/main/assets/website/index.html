@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>+970 SPOT Cafe (970SPOT+) | كافيه +970 سبوت المنصورة</title>
+  <meta name="application-name" content="970SPOT+">
+  
+  <!-- Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Tajawal:wght@500;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Mobile App Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- App Shell -->
+  <div class="app-shell">
+    
+    <!-- App Header -->
+    <header class="app-header">
+      <div class="header-brand">
+        <img src="images/logo_official.jpg" alt="+970 SPOT Logo" class="brand-emblem-img">
+        <div class="brand-text-block">
+          <span class="brand-title-ar">+970 SPOT</span>
+          <span class="brand-subtitle-en">FROM OUR LAND TO YOUR CUP</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button type="button" class="btn-lang-toggle" id="btn-lang-toggle" onclick="toggleLanguage()" aria-label="Switch Language">
+          <span id="btn-lang-text">EN</span>
+        </button>
+        <div class="branch-badge-pill" title="فرع حي الجامعة - المنصورة">
+          <span class="live-dot"></span>
+          <span id="header-branch-badge" data-i18n="branch_badge">حي الجامعة</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Screens Viewport -->
+    <main class="screens-viewport">
+      
+      <!-- Screen 1: Home (الرئيسية) -->
+      <section class="app-screen active" id="screen-home">
+        
+        <!-- Live Active Order Notification Banner (Visible when order placed) -->
+        <div class="active-order-banner" id="home-active-order-banner" style="display:none;" onclick="openOrderTracker()">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="order-banner-pulse"></div>
+            <div>
+              <div class="order-banner-title" id="home-order-status-title">طلبك بيتحضر في الكافيه دلوقتي</div>
+              <div class="order-banner-sub" id="home-order-status-sub">اضغط هنا لمتابعة خط سير الطلب لايف</div>
+            </div>
+          </div>
+          <svg class="icon-svg arrow-dir" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        </div>
+
+        <!-- Welcome Banner in Natural Egyptian Arabic -->
+        <div class="welcome-banner">
+          <div class="welcome-time-greeting" id="home-time-greeting">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M2 21h18v-2H2v2zm2-4h10V5H4v12zm14-8h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2V9zm-2-2h4a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4h-4V7z"/></svg>
+            <span id="greeting-text-span">طاب يومك • قهوتك جاهزة في فرع حي الجامعة</span>
+          </div>
+          <h2 class="welcome-title" data-i18n="welcome_title">تحب تبدأ بإيه النهارده؟</h2>
+          <p class="welcome-desc" data-i18n="welcome_desc">
+            منور يا غالي في +970 سبوت المنصورة! بن أرابيكا مختص، ماتشا يابانية أصلية، ومخبوزات بتنزل طازة كل يوم.
+          </p>
+          <div class="welcome-actions">
+            <button type="button" class="btn-primary-app" onclick="switchScreen('lab')">
+              <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 19H5V8h14m-3-7v2h-1V5h-2v2h-2V5H9v2H8V3H6v2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3h-2z"/></svg>
+              <span data-i18n="welcome_btn_lab">ظبط مشروبك على مزاجك</span>
+            </button>
+            <button type="button" class="btn-secondary-app" onclick="switchScreen('menu')">
+              <span data-i18n="welcome_btn_menu">تصفح المنيو والأسعار</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Offers Quick Callout Strip -->
+        <div class="active-order-banner" style="background:linear-gradient(135deg,rgba(200,162,81,0.14) 0%,rgba(14,36,23,0.95) 100%);border-color:var(--border-card);margin-top:-6px;" onclick="switchScreen('offers')">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="20" height="20" fill="var(--gold-accent)"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+            <div>
+              <div class="order-banner-title" data-i18n="offers_teaser_title">فيه عروض مستنياك النهارده</div>
+              <div class="order-banner-sub" data-i18n="offers_teaser_sub">خصومات تبدأ من 15% على قهوة الصباح وطلبات الدليفري</div>
+            </div>
+          </div>
+          <svg class="icon-svg arrow-dir" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        </div>
+
+        <!-- Coffee Lab Banner Teaser -->
+        <div class="coffee-lab-hero-card" onclick="switchScreen('lab')">
+          <div class="lab-hero-content">
+            <div class="lab-pill-badge">
+              <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 19a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9.82a2 2 0 0 1 .59-1.42l4.82-4.82A2 2 0 0 1 11.83 3h.34a2 2 0 0 1 1.42.58l4.82 4.82c.38.38.59.89.59 1.42V19zM9 13v2h6v-2H9z"/></svg>
+              <span data-i18n="lab_teaser_badge">مختبر القهوة التفاعلي</span>
+            </div>
+            <h3 class="lab-hero-title" data-i18n="lab_teaser_title">ظبط مشروبك على مزاجك</h3>
+            <p class="lab-hero-desc" data-i18n="lab_teaser_desc">
+              ابتكر فنجانك الخاص خطوة بخطوة: صب الإسبريسو، حدد حليب الشوفان أو اللوز، وزّع الكراميل، وشوف كوبايتك وهي بتتملي قدامك لايف.
+            </p>
+            <div class="lab-hero-action">
+              <span class="lab-action-label" data-i18n="lab_teaser_btn">ابدأ التجربة دلوقتي</span>
+              <svg class="icon-svg arrow-dir" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+            </div>
+          </div>
+          <div class="lab-hero-visual-badge">
+            <div class="lab-visual-cup-mini">
+              <div class="mini-liquid"></div>
+              <div class="mini-foam"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured Spotlight Card -->
+        <div class="hero-spotlight-card">
+          <div class="spotlight-image-box">
+            <img src="images/iced_spanish.jpg" alt="Iced Spanish Latte" loading="eager">
+            <span class="spotlight-badge" data-i18n="spotlight_badge">توقيع المكان • Signature</span>
+          </div>
+          <div class="spotlight-body">
+            <h3 class="spotlight-title" data-i18n="spotlight_title">آيس سبانش لاتيه سبيشيال</h3>
+            <div class="spotlight-subtitle" data-i18n="spotlight_subtitle">Iced Spanish Latte • بن أرابيكا مختص</div>
+            <p class="spotlight-desc" data-i18n="spotlight_desc">
+              المشروب البارد المفضل لرواد الكافيه في المنصورة، مع طبقات الإسبريسو الكثيف والحليب المخملي والنكهة الكراميلية المتوازنة.
+            </p>
+            <div class="spotlight-footer">
+              <button type="button" class="btn-primary-app" onclick="openProductSheet('iced-spanish-latte')">
+                <span data-i18n="spotlight_btn_customize">تخصيص وطلب الصنف</span>
+              </button>
+              <button type="button" class="btn-secondary-app" onclick="toggleTray('iced-spanish-latte')">
+                <span data-i18n="spotlight_btn_add">+ أضف للطلب</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Barista's Picks Compact Section -->
+        <div class="section-header-compact">
+          <h3 class="section-title-compact" data-i18n="barista_picks_title">مختارات الباريستا اليومية</h3>
+          <span class="section-link-more" onclick="switchScreen('menu')">
+            <span data-i18n="barista_picks_more">عرض الكل</span>
+            <svg class="icon-svg arrow-dir" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+          </span>
+        </div>
+        <div class="barista-picks-grid" id="barista-picks-grid">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Loyalty Club Teaser Card -->
+        <div class="loyalty-club-card">
+          <div class="loyalty-icon-box">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="loyalty-text-box">
+            <h4 data-i18n="loyalty_title">نادي رواد +970</h4>
+            <p data-i18n="loyalty_desc">
+              برنامج المكافآت والنقاط الخاص برواد فرع المنصورة قيد التجهيز لمنحك تجربة ولاء مميزة مع كل فنجان.
+            </p>
+          </div>
+        </div>
+
+        <!-- Store Quick Info Card -->
+        <div class="store-quick-card">
+          <div class="store-quick-text">
+            <h5 data-i18n="store_quick_title">فرع المنصورة - حي الجامعة</h5>
+            <p data-i18n="store_quick_desc">بداية شارع الإيمان (ناصية هوت ميكس) • 9:00 ص - 1:00 ص</p>
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Plus+970+Spot+Cafe+Mansoura" 
+             target="_blank" rel="noopener noreferrer" class="btn-directions-link">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span data-i18n="store_quick_map">الخريطة</span>
+          </a>
+        </div>
+
+      </section>
+
+      <!-- Screen 2: Menu & Drink Simulator (قلّب وشوف مشروبك) -->
+      <section class="app-screen" id="screen-menu">
+        <div class="screen-header-block sim-header-block">
+          <div class="simulator-header-badge">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M2 21h18v-2H2v2zm2-4h10V5H4v12zm14-8h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2V9zm-2-2h4a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4h-4V7z"/></svg>
+            <span data-i18n="menu_sim_badge">محاكي المشروبات التفاعلي • Drink Simulator</span>
+          </div>
+          <h2 class="screen-headline" data-i18n="menu_sim_title">قلّب وشوف مشروبك</h2>
+          <p class="screen-subline" data-i18n="menu_sim_desc">مرر يمين أو شمال لتصفح تشكيلة الكافيه، أو عدل المكونات وحجم الكوباية لايف</p>
+        </div>
+
+        <!-- Persistent Hero Cup Simulator Stage -->
+        <div class="hero-cup-stage" id="hero-cup-stage" aria-label="محاكي المشروب التفاعلي">
+          
+          <!-- Carousel Navigation Controls & Indicator -->
+          <div class="cup-carousel-meta">
+            <button type="button" class="cup-nav-arrow prev-cup-btn" id="btn-cup-prev" onclick="navigateDrinkCarousel(-1)" aria-label="المشروب السابق">
+              <svg class="icon-svg arrow-rev" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+            </button>
+            
+            <div class="cup-meta-center">
+              <span class="cup-drink-counter" id="cup-drink-counter">مشروب 1 من 8</span>
+              <div class="cup-carousel-dots" id="cup-carousel-dots">
+                <!-- Dynamically populated dots -->
+              </div>
+            </div>
+
+            <button type="button" class="cup-nav-arrow next-cup-btn" id="btn-cup-next" onclick="navigateDrinkCarousel(1)" aria-label="المشروب التالي">
+              <svg class="icon-svg arrow-dir" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+            </button>
+          </div>
+
+          <!-- Cup Gesture Viewport -->
+          <div class="hero-cup-viewport" id="hero-cup-viewport">
+            
+            <!-- Live Temperature Badge -->
+            <div class="live-temp-badge" id="sim-temp-badge">
+              <span class="temp-indicator-dot" id="sim-temp-dot"></span>
+              <span id="sim-temp-text">بارد مثلج • 4°C</span>
+            </div>
+
+            <!-- Gesture Drag Surface & SVG Renderer -->
+            <div class="cup-interactive-box" id="cup-interactive-box">
+              
+              <!-- Layered SVG Cup Object -->
+              <svg id="hero-cup-svg" class="hero-cup-svg size-standard temp-iced" viewBox="0 0 240 320" preserveAspectRatio="xMidYMid meet" role="img" aria-label="كوب القهوة التفاعلي">
+                <defs>
+                  <!-- Glass Silhouette Clip Path -->
+                  <clipPath id="hero-cup-interior-clip">
+                    <path d="M 44 28 C 44 28, 196 28, 196 28 L 178 274 C 178 288, 166 298, 148 298 L 92 298 C 74 298, 62 288, 62 274 Z" />
+                  </clipPath>
+
+                  <!-- Dynamic Liquid Gradients -->
+                  <linearGradient id="svg-grad-base" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#43220f" id="svg-stop-base-1"/>
+                    <stop offset="100%" stop-color="#1e0d04" id="svg-stop-base-2"/>
+                  </linearGradient>
+
+                  <linearGradient id="svg-grad-milk" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#fff7eb" stop-opacity="0.95" id="svg-stop-milk-1"/>
+                    <stop offset="70%" stop-color="rgba(255, 247, 235, 0.4)" stop-opacity="0.5"/>
+                    <stop offset="100%" stop-color="rgba(255, 247, 235, 0)" stop-opacity="0"/>
+                  </linearGradient>
+
+                  <radialGradient id="svg-ice-glow" cx="30%" cy="30%" r="70%">
+                    <stop offset="0%" stop-color="rgba(255,255,255,0.7)" id="svg-stop-ice-1"/>
+                    <stop offset="50%" stop-color="rgba(255,255,255,0.2)" id="svg-stop-ice-2"/>
+                    <stop offset="100%" stop-color="rgba(255,255,255,0.05)" id="svg-stop-ice-3"/>
+                  </radialGradient>
+                </defs>
+
+                <!-- Liquid Well (Inside Clip Path) -->
+                <g clip-path="url(#hero-cup-interior-clip)">
+                  <!-- Back Interior Glass Shadow -->
+                  <rect x="0" y="0" width="240" height="320" fill="rgba(255,255,255,0.03)"/>
+
+                  <!-- Base Liquid Layer -->
+                  <rect id="svg-liquid-base" x="40" y="30" width="160" height="270" fill="url(#svg-grad-base)" />
+
+                  <!-- Milk Swirl Layer -->
+                  <path id="svg-liquid-milk" d="M 40 30 L 200 30 L 200 190 Q 150 210, 120 185 Q 80 160, 40 185 Z" fill="url(#svg-grad-milk)" opacity="0.92" />
+
+                  <!-- Inner Glass Wall Drizzle Streaks (Caramel/Chocolate) -->
+                  <g id="svg-wall-streaks" opacity="0.85">
+                    <path class="streak-line streak-1" d="M 68 40 Q 64 90, 72 160 Q 76 210, 74 270" stroke="#dca34b" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-dasharray="8 6"/>
+                    <path class="streak-line streak-2" d="M 172 40 Q 176 110, 168 180 Q 164 220, 166 270" stroke="#dca34b" stroke-width="4" fill="none" stroke-linecap="round" stroke-dasharray="6 8"/>
+                    <path class="streak-line streak-3" d="M 120 50 Q 115 120, 126 190 Q 120 230, 124 265" stroke="#995c10" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="10 6"/>
+                  </g>
+
+                  <!-- Ice Cubes Group (Floating translucent cubes) -->
+                  <g id="svg-ice-group" class="svg-ice-group">
+                    <!-- Cube 1 -->
+                    <g transform="translate(68, 80) rotate(16)">
+                      <rect x="0" y="0" width="34" height="34" rx="6" fill="url(#svg-ice-glow)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+                      <path d="M 5 5 L 29 5 L 29 29" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+                    </g>
+                    <!-- Cube 2 -->
+                    <g transform="translate(138, 105) rotate(-18)">
+                      <rect x="0" y="0" width="32" height="32" rx="6" fill="url(#svg-ice-glow)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+                      <path d="M 4 4 L 28 4 L 28 28" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+                    </g>
+                    <!-- Cube 3 -->
+                    <g transform="translate(85, 150) rotate(8)">
+                      <rect x="0" y="0" width="30" height="30" rx="5" fill="url(#svg-ice-glow)" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/>
+                    </g>
+                    <!-- Cube 4 -->
+                    <g transform="translate(130, 185) rotate(-10)">
+                      <rect x="0" y="0" width="28" height="28" rx="5" fill="url(#svg-ice-glow)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+                    </g>
+                  </g>
+
+                  <!-- Foam / Crema Crown -->
+                  <g id="svg-foam-group">
+                    <path id="svg-foam-layer" d="M 44 28 L 196 28 L 196 62 Q 120 72, 44 62 Z" fill="#fff9f0" opacity="0.95" />
+                    <!-- Microfoam texture dots -->
+                    <ellipse cx="120" cy="46" rx="50" ry="12" fill="rgba(236,220,197,0.4)"/>
+                    <path id="svg-latte-art" d="M 100 44 Q 120 54, 140 44 Q 120 60, 100 44 Z" fill="#8a4d22" opacity="0.75"/>
+                  </g>
+
+                  <!-- Top Drizzle Ribbon (Caramel / Chocolate zigzag) -->
+                  <path id="svg-drizzle-ribbon" d="M 58 42 Q 78 52, 98 42 T 138 42 T 178 42" fill="none" stroke="#dca34b" stroke-width="3.5" stroke-linecap="round" opacity="0.9" />
+
+                  <!-- Dusting / Toppings (Cinnamon / Cocoa / Sea Salt) -->
+                  <g id="svg-toppings-group" opacity="0.9">
+                    <circle cx="85" cy="44" r="1.5" fill="#5c2e0b"/>
+                    <circle cx="95" cy="48" r="1.8" fill="#5c2e0b"/>
+                    <circle cx="110" cy="42" r="1.4" fill="#5c2e0b"/>
+                    <circle cx="125" cy="46" r="2" fill="#5c2e0b"/>
+                    <circle cx="140" cy="43" r="1.6" fill="#5c2e0b"/>
+                    <circle cx="155" cy="47" r="1.5" fill="#5c2e0b"/>
+                    <circle cx="105" cy="52" r="1.5" fill="#5c2e0b"/>
+                    <circle cx="135" cy="50" r="1.7" fill="#5c2e0b"/>
+                  </g>
+                </g>
+
+                <!-- Foreground Glass Highlights & Rim (Outside Clip Path) -->
+                <!-- Glass Outer Contour Outline -->
+                <path d="M 44 28 L 196 28 L 178 274 C 178 288, 166 298, 148 298 L 92 298 C 74 298, 62 288, 62 274 Z" 
+                      fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="2.5" />
+                
+                <!-- Glass Rim Ellipse Highlight -->
+                <ellipse cx="120" cy="28" rx="76" ry="6" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.7)" stroke-width="1.8"/>
+
+                <!-- Left Glass Specular Reflection Streak -->
+                <path d="M 52 38 L 68 270" stroke="rgba(255,255,255,0.38)" stroke-width="4.5" stroke-linecap="round"/>
+                <path d="M 58 45 L 72 250" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round"/>
+
+                <!-- Right Glass Highlight -->
+                <path d="M 188 38 L 174 270" stroke="rgba(255,255,255,0.22)" stroke-width="2.5" stroke-linecap="round"/>
+
+                <!-- Bottom Glass Base Refraction Curve -->
+                <path d="M 76 286 Q 120 294, 164 286" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none"/>
+
+                <!-- Steam Effect (For Hot Drinks) -->
+                <g id="svg-steam-group" class="svg-steam-group" opacity="0">
+                  <path class="steam-curl curl-1" d="M 95 24 Q 90 10, 100 2 Q 110 -6, 105 -18" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="3" stroke-linecap="round"/>
+                  <path class="steam-curl curl-2" d="M 120 22 Q 128 8, 118 0 Q 108 -8, 122 -20" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="3.5" stroke-linecap="round"/>
+                  <path class="steam-curl curl-3" d="M 145 24 Q 140 12, 150 4 Q 160 -4, 152 -16" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="3" stroke-linecap="round"/>
+                </g>
+              </svg>
+
+            </div>
+
+            <!-- Swipe Feedback Hint Pill -->
+            <div class="swipe-hint-pill" id="swipe-hint-pill">
+              <svg class="icon-svg arrow-rev" viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+              <span data-i18n="swipe_hint">قلّب واسحب يمين وشمال</span>
+              <svg class="icon-svg arrow-dir" viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+            </div>
+
+          </div>
+
+          <!-- Interactive Cup Size Selectors Directly Below Cup -->
+          <div class="size-controls-strip">
+            <span class="size-controls-label" data-i18n="label_cup_size">اختار حجم الكوباية:</span>
+            <div class="size-pills-group" role="radiogroup">
+              <button type="button" class="size-pill-btn" data-size="small" onclick="selectSimulatorSize('small')">
+                <span class="size-shape size-sm"></span>
+                <span class="size-name" data-i18n="size_sm">صغير (8oz)</span>
+                <span class="size-delta">-10 ج.م</span>
+              </button>
+              <button type="button" class="size-pill-btn active" data-size="standard" onclick="selectSimulatorSize('standard')">
+                <span class="size-shape size-std"></span>
+                <span class="size-name" data-i18n="size_std">مظبوط (12oz)</span>
+                <span class="size-delta" data-i18n="size_std_badge">الموصى به</span>
+              </button>
+              <button type="button" class="size-pill-btn" data-size="large" onclick="selectSimulatorSize('large')">
+                <span class="size-shape size-lg"></span>
+                <span class="size-name" data-i18n="size_lg">كبير (16oz)</span>
+                <span class="size-delta">+15 ج.م</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Active Drink Info & Action Card -->
+          <div class="drink-simulator-info-card">
+            <div class="sim-info-head">
+              <div>
+                <span class="sim-drink-category" id="sim-drink-category">مشروبات مثلجة • Iced Drinks</span>
+                <h3 class="sim-drink-title" id="sim-drink-title">آيس سبانش لاتيه سبيشيال</h3>
+                <div class="sim-drink-en-title" id="sim-drink-en-title">Iced Spanish Latte Special</div>
+              </div>
+              <div class="sim-price-badge">
+                <span class="sim-price-val" id="sim-price-val">85</span>
+                <span class="sim-price-curr" data-i18n="currency_egp">ج.م</span>
+              </div>
+            </div>
+            
+            <p class="sim-drink-desc" id="sim-drink-desc">
+              المشروب الأكثر طلباً في فرع المنصورة. طبقات الحليب البارد مع الإسبريسو المركز والحلاوة الكراميلية المتوازنة.
+            </p>
+
+            <!-- Metrics Radar Strip -->
+            <div class="sim-metrics-strip">
+              <div class="metric-item">
+                <span class="metric-label" data-i18n="metric_caffeine">الكافيين</span>
+                <span class="metric-value" id="sim-caffeine-val">دبل شوت (متوازن)</span>
+              </div>
+              <div class="metric-divider"></div>
+              <div class="metric-item">
+                <span class="metric-label" data-i18n="metric_body">القوام</span>
+                <span class="metric-value" id="sim-body-val">مخملي كريمي</span>
+              </div>
+              <div class="metric-divider"></div>
+              <div class="metric-item">
+                <span class="metric-label" data-i18n="metric_sweet">الحلاوة</span>
+                <span class="metric-value" id="sim-sweet-val">مظبوط (50%)</span>
+              </div>
+            </div>
+
+            <!-- Tags Strip -->
+            <div class="sim-tags-strip" id="sim-tags-strip">
+              <span class="sim-tag-pill">بارد</span>
+              <span class="sim-tag-pill">كراميلي</span>
+              <span class="sim-tag-pill">بن مختص</span>
+            </div>
+
+            <!-- Primary Actions Row -->
+            <div class="sim-actions-grid">
+              <button type="button" class="btn-primary-app sim-add-tray-btn" onclick="addCurrentSimulatorDrinkToTray()">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                <span data-i18n="sim_btn_add_tray">ضيفه للعربة</span>
+                <span class="sim-btn-price" id="sim-btn-price-inline">85 ج.م</span>
+              </button>
+              
+              <button type="button" class="btn-secondary-app sim-toggle-customizer-btn" id="btn-toggle-customizer" onclick="toggleCustomizerWorkspace()">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                <span data-i18n="sim_btn_customize">اصنع مشروبك على مزاجك</span>
+              </button>
+
+              <button type="button" class="btn-whatsapp-action" onclick="orderCurrentDrinkWhatsApp()" title="طلب مباشر عبر واتساب">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/></svg>
+                <span data-i18n="sim_btn_wa">واتساب</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- "اصنع مشروبك" Interactive Customizer Workspace (Dedicated categorized controls) -->
+        <div class="customizer-workspace" id="customizer-workspace">
+          
+          <div class="customizer-toolbar">
+            <div class="customizer-title-box">
+              <span class="customizer-badge" data-i18n="customizer_badge">ورشة التخصيص الحية</span>
+              <h4 data-i18n="customizer_title">ضيف اللي بتحبه لمشروبك</h4>
+            </div>
+            
+            <div class="customizer-history-buttons">
+              <button type="button" class="btn-history-ctrl" id="btn-undo-action" onclick="undoDrinkCustomization()" disabled title="تراجع">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/></svg>
+                <span data-i18n="btn_undo">تراجع</span>
+              </button>
+              <button type="button" class="btn-history-ctrl" onclick="resetDrinkCustomization()" title="ابدأ من جديد">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+                <span data-i18n="btn_reset">ابدأ من جديد</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 1. أساس المشروب (Drink Base) -->
+          <div class="customizer-section">
+            <div class="customizer-section-title">
+              <span class="section-tag" data-i18n="tag_base">1. أساس المشروب</span>
+              <span class="section-hint" data-i18n="hint_base">بن أرابيكا مختص أو ماتشا يابانية</span>
+            </div>
+            <div class="options-grid grid-2" id="grid-base-options">
+              <button type="button" class="customizer-option-card selected" data-field="base" data-val="espresso" onclick="applyCustomOption('base', 'espresso', this)">
+                <div class="option-icon-indicator base-espresso"></div>
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_base_espresso">دبل إسبريسو أرابيكا</span>
+                  <span class="opt-sub" data-i18n="sub_base_espresso">مركز وغني</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+              <button type="button" class="customizer-option-card" data-field="base" data-val="coldbrew" onclick="applyCustomOption('base', 'coldbrew', this)">
+                <div class="option-icon-indicator base-coldbrew"></div>
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_base_coldbrew">كولد برو مقطر بارد</span>
+                  <span class="opt-sub" data-i18n="sub_base_coldbrew">16 ساعة تقطير بطيء</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+              <button type="button" class="customizer-option-card" data-field="base" data-val="matcha" onclick="applyCustomOption('base', 'matcha', this)">
+                <div class="option-icon-indicator base-matcha"></div>
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_base_matcha">ماتشا يابانية احتفالية</span>
+                  <span class="opt-sub" data-i18n="sub_base_matcha">عضوية طاقة هادئة</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+              <button type="button" class="customizer-option-card" data-field="base" data-val="spanish" onclick="applyCustomOption('base', 'spanish', this)">
+                <div class="option-icon-indicator base-spanish"></div>
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_base_spanish">خلطة السبانش سبيشيال</span>
+                  <span class="opt-sub" data-i18n="sub_base_spanish">توقيع كافيه +970</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+              <button type="button" class="customizer-option-card" data-field="base" data-val="chocolate" onclick="applyCustomOption('base', 'chocolate', this)">
+                <div class="option-icon-indicator base-chocolate"></div>
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_base_chocolate">شوكولاتة بلجيكية فاخرة</span>
+                  <span class="opt-sub" data-i18n="sub_base_chocolate">كاكاو مخملي ناعم</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 2. نوع اللبن (Milk Type) -->
+          <div class="customizer-section">
+            <div class="customizer-section-title">
+              <span class="section-tag" data-i18n="tag_milk">2. نوع اللبن</span>
+              <span class="section-hint" data-i18n="hint_milk">حليب طازج أو بدائل نباتية باريستا</span>
+            </div>
+            <div class="options-grid grid-2" id="grid-milk-options">
+              <button type="button" class="customizer-option-card selected" data-field="milk" data-val="whole" onclick="applyCustomOption('milk', 'whole', this)">
+                <div class="swatch-indicator swatch-whole"></div>
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_milk_whole">كامل الدسم</span>
+                  <span class="opt-sub" data-i18n="sub_milk_whole">مخملي غني ورغوة متماسكة</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+              <button type="button" class="customizer-option-card" data-field="milk" data-val="oat" onclick="applyCustomOption('milk', 'oat', this)">
+                <div class="swatch-indicator swatch-oat"></div>
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_milk_oat">حليب شوفان باريستا</span>
+                  <span class="opt-sub">+15 ج.م</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+              <button type="button" class="customizer-option-card" data-field="milk" data-val="almond" onclick="applyCustomOption('milk', 'almond', this)">
+                <div class="swatch-indicator swatch-almond"></div>
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_milk_almond">حليب لوز ناعم</span>
+                  <span class="opt-sub">+15 ج.م</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+              <button type="button" class="customizer-option-card" data-field="milk" data-val="skim" onclick="applyCustomOption('milk', 'skim', this)">
+                <div class="swatch-indicator swatch-skim"></div>
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_milk_skim">خالي الدسم</span>
+                  <span class="opt-sub" data-i18n="sub_milk_skim">خفيف وسعرات أقل</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+              <button type="button" class="customizer-option-card" data-field="milk" data-val="none" onclick="applyCustomOption('milk', 'none', this)">
+                <div class="swatch-indicator swatch-none"></div>
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_milk_none">من غير لبن (Black)</span>
+                  <span class="opt-sub" data-i18n="sub_milk_none">نقاء البن الصافي</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. درجة السكر (Sweetness Level) -->
+          <div class="customizer-section">
+            <div class="customizer-section-title">
+              <span class="section-tag" data-i18n="tag_sweet">3. درجة السكر</span>
+              <span class="section-hint" data-i18n="hint_sweet">محليات طبيعية متوازنة</span>
+            </div>
+            <div class="options-grid grid-2" id="grid-sweet-options">
+              <button type="button" class="customizer-option-card" data-field="sweetness" data-val="0" onclick="applyCustomOption('sweetness', '0', this)">
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_sweet_0">من غير سكر (0%)</span>
+                  <span class="opt-sub" data-i18n="sub_sweet_0">نقاء القهوة الأصلي</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+              <button type="button" class="customizer-option-card" data-field="sweetness" data-val="25" onclick="applyCustomOption('sweetness', '25', this)">
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_sweet_25">سكر خفيف (25%)</span>
+                  <span class="opt-sub" data-i18n="sub_sweet_25">لمسة حلاوة هادية</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+              <button type="button" class="customizer-option-card selected" data-field="sweetness" data-val="50" onclick="applyCustomOption('sweetness', '50', this)">
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_sweet_50">مظبوط ومتوازن (50%)</span>
+                  <span class="opt-sub" data-i18n="sub_sweet_50">الموصى به من الباريستا</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+              <button type="button" class="customizer-option-card" data-field="sweetness" data-val="100" onclick="applyCustomOption('sweetness', '100', this)">
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_sweet_100">حلو كراميلي (100%)</span>
+                  <span class="opt-sub" data-i18n="sub_sweet_100">لعشاق الحلاوة الغنية</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 4. النكهات (Flavors) -->
+          <div class="customizer-section">
+            <div class="customizer-section-title">
+              <span class="section-tag" data-i18n="tag_flavor">4. سيرب النكهات</span>
+              <span class="section-hint" data-i18n="hint_flavor">سيرب طبيعي عالي الجودة</span>
+            </div>
+            <div class="options-grid grid-2" id="grid-flavor-options">
+              <button type="button" class="customizer-option-card selected" data-field="flavor" data-val="caramel" onclick="applyCustomOption('flavor', 'caramel', this)">
+                <div class="swatch-indicator swatch-caramel"></div>
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_flavor_caramel">كراميل مملح فرنسي</span>
+                  <span class="opt-sub">+10 ج.م</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+              <button type="button" class="customizer-option-card" data-field="flavor" data-val="vanilla" onclick="applyCustomOption('flavor', 'vanilla', this)">
+                <div class="swatch-indicator swatch-vanilla"></div>
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_flavor_vanilla">فانيليا مدغشقر نقية</span>
+                  <span class="opt-sub">+10 ج.م</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+              <button type="button" class="customizer-option-card" data-field="flavor" data-val="chocolate" onclick="applyCustomOption('flavor', 'chocolate', this)">
+                <div class="swatch-indicator swatch-darkchoc"></div>
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_flavor_chocolate">شوكولاتة داكنة بلجيكية</span>
+                  <span class="opt-sub">+10 ج.م</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+              <button type="button" class="customizer-option-card" data-field="flavor" data-val="none" onclick="applyCustomOption('flavor', 'none', this)">
+                <div class="swatch-indicator swatch-natural"></div>
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_flavor_none">بدون نكهة إضافية</span>
+                  <span class="opt-sub" data-i18n="sub_flavor_none">نقاء النكهة الأصلية</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 5. الإضافات (Add-ons & Extra Shot) -->
+          <div class="customizer-section">
+            <div class="customizer-section-title">
+              <span class="section-tag" data-i18n="tag_addons">5. الإضافات</span>
+              <span class="section-hint" data-i18n="hint_addons">زود جرعة إسبريسو أو اضبط الثلج</span>
+            </div>
+            
+            <div class="addons-action-bar">
+              <button type="button" class="btn-extra-shot-toggle" id="btn-extra-shot-sim" onclick="toggleSimulatorExtraShot()">
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div class="addon-icon-circle">
+                    <svg class="icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M2 21h18v-2H2v2zm2-4h10V5H4v12zm14-8h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2V9zm-2-2h4a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4h-4V7z"/></svg>
+                  </div>
+                  <div style="text-align:start;">
+                    <div class="addon-title" data-i18n="btn_extra_shot_label">زود جرعة إسبريسو (+15 ج.م)</div>
+                    <div class="addon-sub" data-i18n="btn_extra_shot_desc">دبل شوت إضافي لنكهة أقوى وكافيين مضاعف</div>
+                  </div>
+                </div>
+                <span class="addon-toggle-badge" id="addon-shot-badge">+ إضافة</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 6. التوبينج ولمسات التقديم (Toppings) -->
+          <div class="customizer-section">
+            <div class="customizer-section-title">
+              <span class="section-tag" data-i18n="tag_toppings">6. التوبينج ورشة التقديم</span>
+              <span class="section-hint" data-i18n="hint_toppings">لمسة الباريستا الختامية</span>
+            </div>
+            <div class="options-grid grid-2" id="grid-topping-options">
+              <button type="button" class="customizer-option-card selected" data-field="topping" data-val="seasalt" onclick="applyCustomOption('topping', 'seasalt', this)">
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_top_seasalt">كريمة الملح البحري</span>
+                  <span class="opt-sub">Sea Salt Cream Cold Foam</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+              <button type="button" class="customizer-option-card" data-field="topping" data-val="cinnamon" onclick="applyCustomOption('topping', 'cinnamon', this)">
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_top_cinnamon">رشة قرفة سيلانية</span>
+                  <span class="opt-sub">Ceylon Cinnamon Dust</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+              <button type="button" class="customizer-option-card" data-field="topping" data-val="cocoa" onclick="applyCustomOption('topping', 'cocoa', this)">
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_top_cocoa">بودرة كاكاو فاخر</span>
+                  <span class="opt-sub">Dark Belgian Cocoa</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+              <button type="button" class="customizer-option-card" data-field="topping" data-val="none" onclick="applyCustomOption('topping', 'none', this)">
+                <div class="option-text">
+                  <span class="opt-name" data-i18n="opt_top_none">بدون رشة</span>
+                  <span class="opt-sub" data-i18n="sub_top_none">تقديم كلاسيكي</span>
+                </div>
+                <span class="opt-check">✓</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Customizer Final Price & Tray Submission -->
+          <div class="customizer-footer-action">
+            <div class="final-calc-price-box">
+              <span class="label" data-i18n="label_final_price">السعر النهائي:</span>
+              <span class="val" id="customizer-final-price">85 ج.م</span>
+            </div>
+            <button type="button" class="btn-primary-app flex-1" onclick="addCurrentSimulatorDrinkToTray()">
+              <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+              <span data-i18n="btn_add_to_tray_final">ضيفه للعربة</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Quick Switcher Categories & Fresh Bakery Strip -->
+        <div class="menu-catalog-switch-section">
+          <div class="section-header-compact" style="margin-top:20px;">
+            <h3 class="section-title-compact" data-i18n="quick_catalog_title">تصفح تشكيلة الكافيه والبيكري</h3>
+          </div>
+
+          <!-- Category Pills -->
+          <div class="category-touch-strip" role="tablist">
+            <button type="button" class="touch-pill active" data-cat="all" onclick="filterCatalogCategory('all', this)" data-i18n="cat_all">الكل</button>
+            <button type="button" class="touch-pill" data-cat="iced-coffee" onclick="filterCatalogCategory('iced-coffee', this)" data-i18n="cat_iced">مشروبات مثلجة</button>
+            <button type="button" class="touch-pill" data-cat="hot-coffee" onclick="filterCatalogCategory('hot-coffee', this)" data-i18n="cat_hot">قهوة ساخنة</button>
+            <button type="button" class="touch-pill" data-cat="matcha" onclick="filterCatalogCategory('matcha', this)" data-i18n="cat_matcha">ماتشا يابانية</button>
+            <button type="button" class="touch-pill" data-cat="bakery" onclick="filterCatalogCategory('bakery', this)" data-i18n="cat_bakery">بيكري ومخبوزات</button>
+            <button type="button" class="touch-pill" data-cat="refreshers" onclick="filterCatalogCategory('refreshers', this)" data-i18n="cat_refreshers">موخيتو ومنعشات</button>
+          </div>
+
+          <!-- Compact Quick-Select Catalog Cards Feed -->
+          <div class="menu-cards-feed" id="menu-cards-feed">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Screen 3: Coffee Lab (اصنع مشروبك - NEW SIGNATURE EXPERIENCE) -->
+      <section class="app-screen" id="screen-lab">
+        <div class="screen-header-block lab-header-block">
+          <div class="lab-header-badge">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 19a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9.82a2 2 0 0 1 .59-1.42l4.82-4.82A2 2 0 0 1 11.83 3h.34a2 2 0 0 1 1.42.58l4.82 4.82c.38.38.59.89.59 1.42V19zM9 13v2h6v-2H9z"/></svg>
+            <span data-i18n="lab_screen_badge">المختبر التفاعلي • Coffee Lab</span>
+          </div>
+          <h2 class="screen-headline" data-i18n="lab_screen_title">اصنع فنجانك على مزاجك</h2>
+          <p class="screen-subline" data-i18n="lab_screen_desc">تفاعل مع كل مكون وشاهد مشروبك يتكون أمامك في الكوب مباشرة</p>
+        </div>
+
+        <!-- Interactive Lab Layout: Visualizer on Top/Side, Controls below -->
+        <div class="lab-interactive-layout">
+          
+          <!-- Live Interactive Drink Visualizer Panel -->
+          <div class="lab-visualizer-container">
+            <div class="drink-canvas-wrapper" id="drink-canvas-wrapper">
+              <!-- Visualized layered drink container -->
+              <div class="drink-render-stage" id="drink-render-stage">
+                
+                <!-- Animated Physical Pouring Stream from above -->
+                <div class="pour-stream-jet" id="pour-stream-jet"></div>
+                <div class="pour-splash-ring" id="pour-splash-ring"></div>
+
+                <!-- Steam rising (for hot drinks) -->
+                <div class="drink-steam-container" id="drink-steam">
+                  <span class="steam-wisp wisp-1"></span>
+                  <span class="steam-wisp wisp-2"></span>
+                  <span class="steam-wisp wisp-3"></span>
+                </div>
+
+                <!-- Cup Silhouette Container -->
+                <div class="drink-cup-silhouette size-standard temp-iced" id="cup-silhouette">
+                  <!-- Glass reflections & rim -->
+                  <div class="glass-rim"></div>
+                  <div class="glass-reflection-left"></div>
+                  <div class="glass-reflection-right"></div>
+
+                  <!-- Caramel dripping on inner glass wall -->
+                  <div class="caramel-streaks-wall" id="caramel-streaks-wall"></div>
+                  <div class="chocolate-ribbons" id="chocolate-ribbons"></div>
+
+                  <!-- Liquid Layer Hierarchy -->
+                  <div class="cup-liquid-well" id="cup-liquid-well">
+                    
+                    <!-- Base Layer (Espresso, Cold Brew, Matcha, etc.) -->
+                    <div class="layer-base" id="layer-base"></div>
+                    
+                    <!-- Milk Layer with blend swirl -->
+                    <div class="layer-milk" id="layer-milk"></div>
+                    
+                    <!-- Sweetness syrup glaze -->
+                    <div class="layer-sweetness" id="layer-sweetness"></div>
+
+                    <!-- Ice Cubes (for cold drinks) -->
+                    <div class="layer-ice" id="layer-ice">
+                      <div class="ice-cube cube-1"></div>
+                      <div class="ice-cube cube-2"></div>
+                      <div class="ice-cube cube-3"></div>
+                      <div class="ice-cube cube-4"></div>
+                    </div>
+
+                    <!-- Foam / Crema Crown -->
+                    <div class="layer-foam" id="layer-foam">
+                      <div class="foam-texture"></div>
+                      <div class="foam-latte-art" id="foam-latte-art"></div>
+                    </div>
+
+                    <!-- Drizzle Ribbons (Caramel, Chocolate, etc.) -->
+                    <div class="layer-drizzle" id="layer-drizzle"></div>
+
+                    <!-- Dust / Toppings (Cinnamon, Sea Salt, Cocoa) -->
+                    <div class="layer-toppings" id="layer-toppings"></div>
+
+                  </div>
+                </div>
+
+                <!-- Live Temperature Badge -->
+                <div class="live-temp-badge" id="live-temp-badge">
+                  <span class="temp-indicator-dot"></span>
+                  <span id="live-temp-text">بارد مثلج • 4°C</span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Extra Shot and Reset Control Strip -->
+            <div class="lab-extra-controls">
+              <button type="button" class="btn-extra-shot" id="btn-extra-shot" onclick="toggleExtraShot()">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M2 21h18v-2H2v2zm2-4h10V5H4v12zm14-8h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2V9zm-2-2h4a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4h-4V7z"/></svg>
+                <span id="extra-shot-txt" data-i18n="lab_btn_extra_shot">+ شوت إسبريسو إضافي (+15 ج.م)</span>
+              </button>
+              <button type="button" class="btn-lab-reset" onclick="resetLabDrink()" title="ابدأ من جديد">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+                <span data-i18n="lab_btn_reset">ابدأ من جديد</span>
+              </button>
+            </div>
+
+            <!-- Live Drink Identity Summary Card -->
+            <div class="drink-specs-card">
+              <div class="specs-head">
+                <div class="specs-title-box">
+                  <h3 class="specs-drink-name" id="specs-drink-name">آيس سبانش لاتيه شوفان</h3>
+                  <div class="specs-drink-name-en" id="specs-drink-name-en">Iced Spanish Oat Latte</div>
+                </div>
+                <div class="specs-price-box">
+                  <span class="specs-price-val" id="specs-price-val">95</span>
+                  <span class="specs-currency" data-i18n="currency_egp">ج.م</span>
+                </div>
+              </div>
+
+              <!-- Metrics Radar Strip -->
+              <div class="specs-metrics-strip">
+                <div class="metric-item">
+                  <span class="metric-label" data-i18n="metric_caffeine">الكافيين</span>
+                  <span class="metric-value" id="metric-caffeine-val">دبل شوت (قوي)</span>
+                </div>
+                <div class="metric-divider"></div>
+                <div class="metric-item">
+                  <span class="metric-label" data-i18n="metric_body">القوام</span>
+                  <span class="metric-value" id="metric-body-val">مخملي كريمي</span>
+                </div>
+                <div class="metric-divider"></div>
+                <div class="metric-item">
+                  <span class="metric-label" data-i18n="metric_sweet">الحلاوة</span>
+                  <span class="metric-value" id="metric-sweet-val">مظبوط (50%)</span>
+                </div>
+              </div>
+
+              <!-- Quick action buttons -->
+              <div class="specs-actions-row">
+                <button type="button" class="btn-primary-app flex-1" onclick="addLabDrinkToTray()">
+                  <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                  <span data-i18n="lab_btn_add_tray">أضف لطلباتي</span>
+                </button>
+                <button type="button" class="btn-whatsapp-action" onclick="orderLabDrinkWhatsApp()">
+                  <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/></svg>
+                  <span data-i18n="lab_btn_wa">طلب مباشر</span>
+                </button>
+                <button type="button" class="btn-icon-secondary" onclick="saveCurrentLabDrink()" title="حفظ الوصفة في مفضلاتي">
+                  <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Step Navigation Tabs & Configurator -->
+          <div class="lab-configurator-panel">
+            
+            <!-- Step Breadcrumb Tabs -->
+            <div class="lab-steps-nav" role="tablist">
+              <button type="button" class="step-nav-btn active" data-step="1" onclick="goToLabStep(1)">
+                <span class="step-num">1</span>
+                <span class="step-txt" data-i18n="step_base">القاعدة</span>
+              </button>
+              <button type="button" class="step-nav-btn" data-step="2" onclick="goToLabStep(2)">
+                <span class="step-num">2</span>
+                <span class="step-txt" data-i18n="step_temp">الحجم والحرارة</span>
+              </button>
+              <button type="button" class="step-nav-btn" data-step="3" onclick="goToLabStep(3)">
+                <span class="step-num">3</span>
+                <span class="step-txt" data-i18n="step_milk">الحليب</span>
+              </button>
+              <button type="button" class="step-nav-btn" data-step="4" onclick="goToLabStep(4)">
+                <span class="step-num">4</span>
+                <span class="step-txt" data-i18n="step_sweet">الحلاوة</span>
+              </button>
+              <button type="button" class="step-nav-btn" data-step="5" onclick="goToLabStep(5)">
+                <span class="step-num">5</span>
+                <span class="step-txt" data-i18n="step_flavors">الإضافات</span>
+              </button>
+            </div>
+
+            <!-- Step 1: Base Selection -->
+            <div class="lab-step-content active" id="lab-step-1">
+              <div class="step-instruction">
+                <h4 data-i18n="step1_title">اختر قاعدة المشروب الأساسية:</h4>
+                <p data-i18n="step1_desc">نستخدم أرقى محاصيل بن أرابيكا المختصة والماتشا اليابانية الاحتفالية</p>
+              </div>
+              <div class="options-grid grid-2">
+                
+                <button type="button" class="lab-option-card selected" data-type="base" data-val="espresso" onclick="selectLabBase('espresso', this)">
+                  <div class="option-icon-box base-espresso"></div>
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="base_espresso_title">دبل إسبريسو أرابيكا</span>
+                    <span class="option-subtitle" data-i18n="base_espresso_sub">مركز، كراميلي وغني</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+                <button type="button" class="lab-option-card" data-type="base" data-val="coldbrew" onclick="selectLabBase('coldbrew', this)">
+                  <div class="option-icon-box base-coldbrew"></div>
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="base_coldbrew_title">كولد برو مقطر بارد</span>
+                    <span class="option-subtitle" data-i18n="base_coldbrew_sub">مستخلص 16 ساعة ناعم</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+                <button type="button" class="lab-option-card" data-type="base" data-val="matcha" onclick="selectLabBase('matcha', this)">
+                  <div class="option-icon-box base-matcha"></div>
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="base_matcha_title">ماتشا يابانية احتفالية</span>
+                    <span class="option-subtitle" data-i18n="base_matcha_sub">طبيعية عضوية مضادة للأكسدة</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+                <button type="button" class="lab-option-card" data-type="base" data-val="spanish" onclick="selectLabBase('spanish', this)">
+                  <div class="option-icon-box base-spanish"></div>
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="base_spanish_title">خلطة السبانش سبيشيال</span>
+                    <span class="option-subtitle" data-i18n="base_spanish_sub">توقيع كافيه +970 المنصورة</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+                <button type="button" class="lab-option-card" data-type="base" data-val="chocolate" onclick="selectLabBase('chocolate', this)">
+                  <div class="option-icon-box base-chocolate"></div>
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="base_choc_title">شوكولاتة بلجيكية فاخرة</span>
+                    <span class="option-subtitle" data-i18n="base_choc_sub">كاكاو غني ناعم ومخملي</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+              </div>
+            </div>
+
+            <!-- Step 2: Temperature & Size -->
+            <div class="lab-step-content" id="lab-step-2">
+              <div class="step-instruction">
+                <h4 data-i18n="step2_title">درجة الحرارة وسعة الكوب:</h4>
+                <p data-i18n="step2_desc">اختر تفضيل التقديم المثالي لمزاجك اليوم</p>
+              </div>
+
+              <!-- Temperature Selector -->
+              <div class="segmented-control-app" style="margin-bottom:16px;">
+                <button type="button" class="seg-btn active" id="seg-temp-iced" onclick="selectLabTemp('iced')">
+                  <svg class="icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2v20M2 12h20m-3.5-6.5l-13 13m0-13l13 13"/></svg>
+                  <span data-i18n="temp_iced">مثلج ومنعش (Iced)</span>
+                </button>
+                <button type="button" class="seg-btn" id="seg-temp-hot" onclick="selectLabTemp('hot')">
+                  <svg class="icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.5 3H6c-1.1 0-2 .9-2 2v5.71c0 3.83 2.95 7.18 6.78 7.29 3.96.12 7.22-3.06 7.22-7V9h.5c1.93 0 3.5-1.57 3.5-3.5S20.43 3 18.5 3zM16 5v3H6V5h10zm2.5 2h-.5V5h.5c.83 0 1.5.67 1.5 1.5S19.33 7 18.5 7zM4 19h16v2H4v-2z"/></svg>
+                  <span data-i18n="temp_hot">ساخن ومبخر (Hot)</span>
+                </button>
+              </div>
+
+              <!-- Cup Size Selector -->
+              <div class="options-grid grid-2">
+                <button type="button" class="lab-option-card selected" data-type="size" data-val="standard" onclick="selectLabSize('standard', this)">
+                  <div class="size-visual-indicator size-visual-std"></div>
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="size_std_title">المقاس القياسي (12oz)</span>
+                    <span class="option-subtitle" data-i18n="size_std_sub">التوازن المثالي للنكهات</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+                <button type="button" class="lab-option-card" data-type="size" data-val="large" onclick="selectLabSize('large', this)">
+                  <div class="size-visual-indicator size-visual-large"></div>
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="size_lg_title">المقاس الكبير (16oz)</span>
+                    <span class="option-subtitle" data-i18n="size_lg_sub">انتعاش مضاعف لك ولجلساتك</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 3: Milk & Texture -->
+            <div class="lab-step-content" id="lab-step-3">
+              <div class="step-instruction">
+                <h4 data-i18n="step3_title">نوع الحليب وقوام الرغوة:</h4>
+                <p data-i18n="step3_desc">يتوفر لدينا حليب نباتي عضوي وخيارات صحية خالية من اللاكتوز</p>
+              </div>
+              <div class="options-grid grid-2">
+                
+                <button type="button" class="lab-option-card selected" data-type="milk" data-val="whole" onclick="selectLabMilk('whole', this)">
+                  <div class="milk-swatch swatch-whole"></div>
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="milk_whole_title">حليب كامل الدسم</span>
+                    <span class="option-subtitle" data-i18n="milk_whole_sub">مخملي غني ورغوة متماسكة</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+                <button type="button" class="lab-option-card" data-type="milk" data-val="oat" onclick="selectLabMilk('oat', this)">
+                  <div class="milk-swatch swatch-oat"></div>
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="milk_oat_title">حليب شوفان باريستا</span>
+                    <span class="option-subtitle" data-i18n="milk_oat_sub">نباتي محمص طبيعياً (+15 ج.م)</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+                <button type="button" class="lab-option-card" data-type="milk" data-val="almond" onclick="selectLabMilk('almond', this)">
+                  <div class="milk-swatch swatch-almond"></div>
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="milk_almond_title">حليب لوز ناعم</span>
+                    <span class="option-subtitle" data-i18n="milk_almond_sub">خفيف نكهة مكسرات (+15 ج.م)</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+                <button type="button" class="lab-option-card" data-type="milk" data-val="skim" onclick="selectLabMilk('skim', this)">
+                  <div class="milk-swatch swatch-skim"></div>
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="milk_skim_title">حليب خالي الدسم</span>
+                    <span class="option-subtitle" data-i18n="milk_skim_sub">خفيف وسعرات أقل</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+                <button type="button" class="lab-option-card" data-type="milk" data-val="none" onclick="selectLabMilk('none', this)">
+                  <div class="milk-swatch swatch-none"></div>
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="milk_none_title">بدون حليب (قهوة سوداء)</span>
+                    <span class="option-subtitle" data-i18n="milk_none_sub">نقاء البن الصافي 100%</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+              </div>
+            </div>
+
+            <!-- Step 4: Sweetness Level -->
+            <div class="lab-step-content" id="lab-step-4">
+              <div class="step-instruction">
+                <h4 data-i18n="step4_title">درجة الحلاوة والتوازن:</h4>
+                <p data-i18n="step4_desc">نستخدم محليات طبيعية وسيرب عالي الجودة معد بعناية</p>
+              </div>
+
+              <div class="sweetness-slider-visual">
+                <div class="sweetness-track">
+                  <div class="sweetness-fill" id="sweetness-fill" style="width: 50%;"></div>
+                </div>
+                <div class="sweetness-nodes">
+                  <div class="node-label">0%</div>
+                  <div class="node-label">25%</div>
+                  <div class="node-label">50%</div>
+                  <div class="node-label">100%</div>
+                </div>
+              </div>
+
+              <div class="options-grid grid-2">
+                <button type="button" class="lab-option-card" data-type="sweetness" data-val="0" onclick="selectLabSweetness('0', this)">
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="sweet_0_title">بدون سكر (0%)</span>
+                    <span class="option-subtitle" data-i18n="sweet_0_sub">نكهة القهوة الأصلية النقية</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+                <button type="button" class="lab-option-card" data-type="sweetness" data-val="25" onclick="selectLabSweetness('25', this)">
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="sweet_25_title">سكر خفيف (25%)</span>
+                    <span class="option-subtitle" data-i18n="sweet_25_sub">لمسة حلاوة لطيفة جداً</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+                <button type="button" class="lab-option-card selected" data-type="sweetness" data-val="50" onclick="selectLabSweetness('50', this)">
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="sweet_50_title">مظبوط ومتوازن (50%)</span>
+                    <span class="option-subtitle" data-i18n="sweet_50_sub">النسبة الموصى بها من الباريستا</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+                <button type="button" class="lab-option-card" data-type="sweetness" data-val="100" onclick="selectLabSweetness('100', this)">
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="sweet_100_title">حلو غني (100%)</span>
+                    <span class="option-subtitle" data-i18n="sweet_100_sub">لعشاق المشروبات الكراميلية</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 5: Infusions & Finishing Toppings -->
+            <div class="lab-step-content" id="lab-step-5">
+              <div class="step-instruction">
+                <h4 data-i18n="step5_title">سيرب النكهات ولمسات الباريستا:</h4>
+                <p data-i18n="step5_desc">اختر نكهتك الإضافية ورشة التقديم الفاخرة</p>
+              </div>
+
+              <!-- Syrups -->
+              <div class="substep-label" data-i18n="substep_syrup">سيرب النكهة المركزة:</div>
+              <div class="options-grid grid-2" style="margin-bottom:16px;">
+                
+                <button type="button" class="lab-option-card selected" data-type="flavor" data-val="caramel" onclick="selectLabFlavor('caramel', this)">
+                  <div class="flavor-swatch swatch-caramel"></div>
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="flavor_caramel">كراميل مملح فرنسي</span>
+                    <span class="option-subtitle">+10 ج.م</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+                <button type="button" class="lab-option-card" data-type="flavor" data-val="vanilla" onclick="selectLabFlavor('vanilla', this)">
+                  <div class="flavor-swatch swatch-vanilla"></div>
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="flavor_vanilla">فانيليا مدغشقر نقية</span>
+                    <span class="option-subtitle">+10 ج.م</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+                <button type="button" class="lab-option-card" data-type="flavor" data-val="chocolate" onclick="selectLabFlavor('chocolate', this)">
+                  <div class="flavor-swatch swatch-darkchoc"></div>
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="flavor_chocolate">شوكولاتة داكنة بلجيكية</span>
+                    <span class="option-subtitle">+10 ج.م</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+                <button type="button" class="lab-option-card" data-type="flavor" data-val="none" onclick="selectLabFlavor('none', this)">
+                  <div class="flavor-swatch swatch-natural"></div>
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="flavor_none">بدون نكهة إضافية</span>
+                    <span class="option-subtitle">نقاء المكونات الأساسية</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+              </div>
+
+              <!-- Toppings -->
+              <div class="substep-label" data-i18n="substep_topping">رشة اللمسة الأخيرة (Finishing Touch):</div>
+              <div class="options-grid grid-2">
+                
+                <button type="button" class="lab-option-card selected" data-type="topping" data-val="seasalt" onclick="selectLabTopping('seasalt', this)">
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="top_seasalt">كريمة الملح البحري</span>
+                    <span class="option-subtitle">Sea Salt Cold Foam</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+                <button type="button" class="lab-option-card" data-type="topping" data-val="cinnamon" onclick="selectLabTopping('cinnamon', this)">
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="top_cinnamon">رشة قرفة سيلانية</span>
+                    <span class="option-subtitle">Ceylon Cinnamon Dust</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+                <button type="button" class="lab-option-card" data-type="topping" data-val="cocoa" onclick="selectLabTopping('cocoa', this)">
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="top_cocoa">بودرة كاكاو فاخر</span>
+                    <span class="option-subtitle">Dark Cocoa Powder</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+                <button type="button" class="lab-option-card" data-type="topping" data-val="none" onclick="selectLabTopping('none', this)">
+                  <div class="option-info">
+                    <span class="option-title" data-i18n="top_none">بدون رشة</span>
+                    <span class="option-subtitle">تقديم كلاسيكي</span>
+                  </div>
+                  <span class="option-check">✓</span>
+                </button>
+
+              </div>
+            </div>
+
+            <!-- Step Control Navigation Footer -->
+            <div class="lab-step-nav-footer">
+              <button type="button" class="btn-secondary-app" id="btn-lab-prev" onclick="navLabStep(-1)" disabled>
+                <svg class="icon-svg arrow-rev" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M4 11h12.17l-5.59-5.59L12 4l8 8-8 8-1.41-1.41L16.17 13H4v-2z"/></svg>
+                <span data-i18n="btn_prev">السابق</span>
+              </button>
+              <button type="button" class="btn-primary-app" id="btn-lab-next" onclick="navLabStep(1)">
+                <span data-i18n="btn_next">التالي</span>
+                <svg class="icon-svg arrow-dir" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+              </button>
+            </div>
+
+            <!-- Preset Barista Formulas & Saved Creations -->
+            <div class="lab-presets-section">
+              <div class="presets-header">
+                <span class="presets-title" data-i18n="presets_title">خلطات الباريستا الأيقونية المقترحة:</span>
+              </div>
+              <div class="presets-scroll-strip">
+                <button type="button" class="preset-pill-btn" onclick="applyPresetRecipe('signature-970')">
+                  <span class="preset-dot"></span>
+                  <span data-i18n="preset_970">توقيع +970 الأسطوري</span>
+                </button>
+                <button type="button" class="preset-pill-btn" onclick="applyPresetRecipe('matcha-cloud')">
+                  <span class="preset-dot"></span>
+                  <span data-i18n="preset_matcha">سحابة الماتشا بالشوفان</span>
+                </button>
+                <button type="button" class="preset-pill-btn" onclick="applyPresetRecipe('salted-caramel-coldbrew')">
+                  <span class="preset-dot"></span>
+                  <span data-i18n="preset_caramel_brew">كولد برو سولتيد كراميل</span>
+                </button>
+              </div>
+
+              <!-- Saved Recipes Accordion -->
+              <div class="saved-recipes-box" id="saved-recipes-box">
+                <!-- Dynamically populated from localStorage -->
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- Screen 4: Offers (العروض) in Egyptian Arabic -->
+      <section class="app-screen" id="screen-offers">
+        <div class="screen-header-block">
+          <h2 class="screen-headline" data-i18n="offers_title">فيه عروض مستنياك</h2>
+          <p class="screen-subline" data-i18n="offers_desc">أقوى خصومات وعروض حقيقية شغالة في فرع المنصورة والدليفري</p>
+        </div>
+
+        <div class="offers-feed">
+          <!-- Coupon 1 -->
+          <div class="coupon-card-interactive">
+            <span class="coupon-badge-top" data-i18n="coupon1_badge">عرض الصباح والدوام • خصم 15%</span>
+            <h3 class="offer-title" data-i18n="coupon1_title">كومبو قهوة الصباح مع بيكري طازة</h3>
+            <p class="offer-desc" data-i18n="coupon1_desc">
+              روق صباحك مع قهوتك المختصة المفضلة (فلات وايت / سبانش / كابتشينو) مع فطيرة جبنة تركية أو كوكيز طازة يومياً من 9 ص لـ 1 م.
+            </p>
+            <div class="coupon-code-row">
+              <span class="coupon-code-txt">SABAH970</span>
+              <button type="button" class="btn-copy-coupon" onclick="applyCouponCode('SABAH970')">
+                <span data-i18n="btn_apply_code">تطبيق الكود</span>
+              </button>
+            </div>
+            <div style="font-size:0.75rem;color:var(--text-muted);display:flex;justify-content:space-between;margin-top:4px;">
+              <span data-i18n="coupon1_condition">صالح لطلبات الصباح والاستلام</span>
+              <span>ينتهي بنهاية الشهر</span>
+            </div>
+          </div>
+
+          <!-- Coupon 2 -->
+          <div class="coupon-card-interactive">
+            <span class="coupon-badge-top" data-i18n="coupon2_badge">عرض شلة الجامعة والمذاكرة • خصم 20%</span>
+            <h3 class="offer-title" data-i18n="coupon2_title">طلب المجموعات وجلسات العمل</h3>
+            <p class="offer-desc" data-i18n="coupon2_desc">
+              مجمعين للمذاكرة أو الشغل؟ اطلب لمجموعتك فوق 250 ج.م واحصل على خصم 20% فوري مع توصيل سريع لحي الجامعة.
+            </p>
+            <div class="coupon-code-row">
+              <span class="coupon-code-txt">SHABAB970</span>
+              <button type="button" class="btn-copy-coupon" onclick="applyCouponCode('SHABAB970')">
+                <span data-i18n="btn_apply_code">تطبيق الكود</span>
+              </button>
+            </div>
+            <div style="font-size:0.75rem;color:var(--text-muted);display:flex;justify-content:space-between;margin-top:4px;">
+              <span data-i18n="coupon2_condition">للطلبات فوق 250 ج.م</span>
+              <span>مستمر طوال الفصل</span>
+            </div>
+          </div>
+
+          <!-- Coupon 3 -->
+          <div class="coupon-card-interactive">
+            <span class="coupon-badge-top" data-i18n="coupon3_badge">أول أوردر من التطبيق • خصم 10%</span>
+            <h3 class="offer-title" data-i18n="coupon3_title">منورنا في +970 سبوت المنصورة</h3>
+            <p class="offer-desc" data-i18n="coupon3_desc">
+              خصم ترحيبي 10% على إجمالي طلبك الأول سواء دليفري للعنوان أو تيك أواي من الفرع.
+            </p>
+            <div class="coupon-code-row">
+              <span class="coupon-code-txt">FIRST970</span>
+              <button type="button" class="btn-copy-coupon" onclick="applyCouponCode('FIRST970')">
+                <span data-i18n="btn_apply_code">تطبيق الكود</span>
+              </button>
+            </div>
+            <div style="font-size:0.75rem;color:var(--text-muted);display:flex;justify-content:space-between;margin-top:4px;">
+              <span data-i18n="coupon3_condition">متاح لجميع العملاء الجدد</span>
+              <span>بدون حد أدنى</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notification Preference Card -->
+        <div class="notify-toggle-card">
+          <div class="notify-text">
+            <h5 data-i18n="notify_title">تنبيهات العروض الحصرية</h5>
+            <p data-i18n="notify_desc">إشعارك أول بأول بالمشروبات الموسمية الجديدة وأكواد الخصم</p>
+          </div>
+          <label class="switch-control">
+            <input type="checkbox" id="offers-notify-toggle" checked onchange="handleNotifyToggle(this.checked)">
+            <span class="slider-round"></span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Screen 5: Profile, Loyalty Hub & Store (حسابي ومكافآتي) -->
+      <section class="app-screen" id="screen-profile">
+        <div class="screen-header-block">
+          <h2 class="screen-headline" data-i18n="profile_title">حسابي ومكافآتي</h2>
+          <p class="screen-subline" data-i18n="profile_desc">رصيد نقاطك، المكافآت، وبيانات فرع +970 سبوت المنصورة</p>
+        </div>
+
+        <!-- Language Selector Card -->
+        <div class="language-selector-card">
+          <div>
+            <h4 data-i18n="lang_card_title">لغة التطبيق • Language</h4>
+            <p data-i18n="lang_card_desc">اختر لغة العرض المناسبة لك</p>
+          </div>
+          <div class="lang-switch-pills">
+            <button type="button" class="lang-pill-btn active" id="pill-lang-ar" onclick="setLanguage('ar')">العربية</button>
+            <button type="button" class="lang-pill-btn" id="pill-lang-en" onclick="setLanguage('en')">English</button>
+          </div>
+        </div>
+
+        <!-- Dedicated Loyalty Hub Card (جمّع نقاط واستبدلها بمكافآت) -->
+        <div class="loyalty-hub-container">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div class="loyalty-tier-pill">
+              <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <span data-i18n="loyalty_tier_gold">الفئة الذهبية • Gold Roaster</span>
+            </div>
+            <span style="font-size:0.75rem;color:var(--text-secondary);" data-i18n="loyalty_club_name">نادي رواد +970</span>
+          </div>
+
+          <div class="loyalty-points-counter">
+            <span class="loyalty-points-val" id="profile-points-val">180</span>
+            <span style="font-size:0.95rem;color:var(--gold-accent);font-weight:800;" data-i18n="loyalty_pts_unit">نقطة متاحة</span>
+          </div>
+          
+          <p style="font-size:0.84rem;color:var(--text-secondary);line-height:1.4;" data-i18n="loyalty_hub_desc">
+            جمّع نقاط مع كل فنجان تطلبه، واستبدلها بمشروبات مجانية وقسائم خصم فورية.
+          </p>
+
+          <!-- Redeemable Rewards Grid -->
+          <div class="rewards-grid-cards">
+            <!-- Reward 1 -->
+            <div class="reward-item-card">
+              <div>
+                <div class="reward-info-title" data-i18n="reward1_title">كوب فلات وايت مختص مجاناً</div>
+                <div class="reward-info-cost" data-i18n="reward1_cost">استبدال 150 نقطة</div>
+              </div>
+              <button type="button" class="btn-redeem-reward" onclick="redeemRewardPoints(150, 'كوب فلات وايت مجاناً')">
+                <span data-i18n="btn_redeem">استبدال الآن</span>
+              </button>
+            </div>
+
+            <!-- Reward 2 -->
+            <div class="reward-item-card">
+              <div>
+                <div class="reward-info-title" data-i18n="reward2_title">قسيمة خصم 30 ج.م على طلبك</div>
+                <div class="reward-info-cost" data-i18n="reward2_cost">استبدال 100 نقطة</div>
+              </div>
+              <button type="button" class="btn-redeem-reward" onclick="redeemRewardPoints(100, 'خصم 30 ج.م')">
+                <span data-i18n="btn_redeem">استبدال الآن</span>
+              </button>
+            </div>
+
+            <!-- Reward 3 -->
+            <div class="reward-item-card">
+              <div>
+                <div class="reward-info-title" data-i18n="reward3_title">قطعة كوكيز بلجيكي طازة</div>
+                <div class="reward-info-cost" data-i18n="reward3_cost">استبدال 80 نقطة</div>
+              </div>
+              <button type="button" class="btn-redeem-reward" onclick="redeemRewardPoints(80, 'كوكيز بلجيكي طازة')">
+                <span data-i18n="btn_redeem">استبدال الآن</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Customer Profile Card -->
+        <div class="profile-card">
+          <div class="profile-avatar-circle">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          </div>
+          <div class="profile-info-block" style="flex:1;">
+            <h3 data-i18n="member_title">بيانات العميل لتسريع الطلب</h3>
+            <p style="margin-bottom:8px;" data-i18n="member_desc">سجل اسمك ورقمك لحفظهم تلقائياً في طلباتك القادمة</p>
+            <input type="text" id="profile-name-input" placeholder="اكتب اسمك الكريم هنا..." style="width:100%;padding:9px 12px;background:var(--bg-surface-elevated);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:#fff;font-family:inherit;font-size:0.88rem;outline:none;margin-bottom:6px;">
+            <input type="tel" id="profile-phone-input" placeholder="رقم الهاتف (للتواصل والدليفري)..." style="width:100%;padding:9px 12px;background:var(--bg-surface-elevated);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:#fff;font-family:inherit;font-size:0.88rem;outline:none;">
+          </div>
+        </div>
+
+        <!-- Store Location & Hours Box -->
+        <div class="store-detail-box">
+          <div class="store-detail-row">
+            <div class="store-icon-cell">
+              <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div class="store-detail-content">
+              <h5 data-i18n="address_title">عنوان فرع المنصورة</h5>
+              <p data-i18n="address_desc">حي الجامعة - في بداية شارع الإيمان، على ناصية هوت ميكس، مدينة المنصورة، مصر.</p>
+              <button type="button" onclick="copyStoreAddress()" style="margin-top:8px;display:inline-flex;align-items:center;gap:6px;background:rgba(200,162,81,0.14);border:1px solid var(--border-card);color:var(--gold-light);padding:5px 12px;border-radius:var(--radius-full);font-size:0.8rem;font-weight:700;">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span data-i18n="copy_address_btn">نسخ العنوان</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="store-detail-row">
+            <div class="store-icon-cell">
+              <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+            </div>
+            <div class="store-detail-content">
+              <h5 data-i18n="hours_title">ساعات العمل اليومية</h5>
+              <p data-i18n="hours_desc">يومياً من 9:00 صباحاً حتى 1:00 بعد منتصف الليل.</p>
+            </div>
+          </div>
+
+          <div class="store-detail-row">
+            <div class="store-icon-cell">
+              <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></svg>
+            </div>
+            <div class="store-detail-content">
+              <h5 data-i18n="maps_title">خرائط Google ماب</h5>
+              <p data-i18n="maps_desc">عرض الموقع والاتجاهات المباشرة للكافيه بنقرة واحدة.</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Plus+970+Spot+Cafe+Mansoura" 
+                 target="_blank" rel="noopener noreferrer" class="btn-primary-app" style="margin-top:8px;padding:6px 14px;font-size:0.82rem;">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <span data-i18n="maps_btn">فتح في Google Maps</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Media Hub -->
+        <div style="font-size:0.86rem;color:var(--text-muted);font-weight:800;margin-bottom:10px;" data-i18n="social_heading">
+          قنوات التواصل الرسمية:
+        </div>
+        <div class="profile-social-grid">
+          <a href="https://www.instagram.com/plus970spot.eg/" target="_blank" rel="noopener noreferrer" class="profile-social-btn" style="background:linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045);">
+            <span>Instagram @plus970spot.eg</span>
+          </a>
+          <a href="https://api.whatsapp.com/send?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%83%D8%A7%D9%81%D9%8A%D9%87%20+970%20SPOT" target="_blank" rel="noopener noreferrer" class="profile-social-btn" style="background:#25d366;color:#08140d;">
+            <span>WhatsApp</span>
+          </a>
+          <a href="https://www.tiktok.com/search?q=plus970spot%20mansoura" target="_blank" rel="noopener noreferrer" class="profile-social-btn">
+            <span>TikTok</span>
+          </a>
+          <a href="https://www.facebook.com/search/top?q=970+spot+mansoura" target="_blank" rel="noopener noreferrer" class="profile-social-btn" style="background:#1877f2;">
+            <span>Facebook</span>
+          </a>
+        </div>
+
+        <!-- Brand Footer Tagline -->
+        <div style="text-align:center;padding:24px 0 12px;border-top:1px solid var(--border-subtle);margin-top:20px;">
+          <div style="font-family:var(--font-heading);font-weight:900;color:var(--gold-accent);font-size:1.15rem;letter-spacing:1px;">+970 SPOT CAFE</div>
+          <div style="font-size:0.75rem;color:var(--text-secondary);letter-spacing:1.5px;margin-top:4px;" data-i18n="tagline_sub">FROM OUR LAND TO YOUR CUP • PALESTINIAN HERITAGE IN MANSOURA</div>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- Floating Combined Order Tray -->
+    <div class="floating-order-tray" id="floating-order-tray">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="tray-counter-bubble" id="tray-count-bubble">0</span>
+        <span style="font-size:0.86rem;font-weight:800;color:#fff;" data-i18n="tray_selected_text">أصناف محددة في طلبك</span>
+      </div>
+      <button type="button" class="btn-primary-app" onclick="openCheckoutModal()" style="padding:8px 16px;font-size:0.84rem;">
+        <svg class="icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+        <span data-i18n="tray_order_btn">مراجعة الطلب والدليفري</span>
+      </button>
+    </div>
+
+    <!-- Interactive Checkout & Delivery Modal -->
+    <div class="checkout-modal" id="checkout-modal" role="dialog" aria-modal="true" onclick="closeCheckoutModal()">
+      <div class="checkout-sheet" onclick="event.stopPropagation()">
+        <div class="sheet-drag-handle"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+          <h3 style="font-size:1.25rem;font-weight:900;color:#fff;" data-i18n="checkout_title">إتمام الطلب</h3>
+          <button type="button" onclick="closeCheckoutModal()" style="background:transparent;border:none;color:var(--text-muted);font-size:1.2rem;cursor:pointer;">✕</button>
+        </div>
+
+        <!-- Fulfillment Switch: Delivery vs Pickup -->
+        <div class="fulfillment-tabs">
+          <button type="button" class="fulfillment-btn active" id="btn-fulfill-delivery" onclick="setFulfillment('delivery')">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+            <span data-i18n="fulfill_delivery">توصيل للعنوان (دليفري)</span>
+          </button>
+          <button type="button" class="fulfillment-btn" id="btn-fulfill-pickup" onclick="setFulfillment('pickup')">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span data-i18n="fulfill_pickup">استلام من الكافيه (تيك أواي)</span>
+          </button>
+        </div>
+
+        <!-- Delivery Address Details Form (shown when delivery selected) -->
+        <div id="delivery-address-section">
+          <div class="checkout-field-group">
+            <label class="checkout-field-label" data-i18n="label_district">منطقة التوصيل في المنصورة:</label>
+            <select class="checkout-select" id="checkout-district-select" onchange="handleDistrictChange(this.value)">
+              <option value="univ" selected>حي الجامعة (شارع الإيمان، محيط الجامعة) • 15 ج.م</option>
+              <option value="gehan">شارع جيهان وحي النور • 15 ج.م</option>
+              <option value="mashaya">المشاية السفلية وجزيرة الورد • 20 ج.م</option>
+              <option value="toriel">توريل وشارع الجمهورية • 20 ج.م</option>
+              <option value="other">مناطق أخرى بالمنصورة • 25 ج.م</option>
+            </select>
+          </div>
+
+          <div class="checkout-field-group">
+            <label class="checkout-field-label" data-i18n="label_address">العنوان بالتفصيل (الشارع، العمارة، الشقة):</label>
+            <input type="text" class="checkout-input" id="checkout-address-input" placeholder="مثال: شارع الإيمان متفرع من الترعة، عمارة 5 الدور 3...">
+          </div>
+        </div>
+
+        <!-- Pickup Info Notice (shown when pickup selected) -->
+        <div id="pickup-info-section" style="display:none;background:var(--bg-surface-elevated);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);padding:12px;margin-bottom:14px;">
+          <div style="font-size:0.84rem;font-weight:800;color:var(--gold-light);" data-i18n="pickup_notice_title">مكان الاستلام:</div>
+          <div style="font-size:0.8rem;color:var(--text-secondary);margin-top:2px;" data-i18n="pickup_notice_desc">فرع حي الجامعة - في بداية شارع الإيمان (ناصية هوت ميكس). سيتم إعداد طلبك ليكون جاهزاً فور وصولك.</div>
+        </div>
+
+        <!-- Customer Phone & Notes -->
+        <div class="checkout-field-group">
+          <label class="checkout-field-label" data-i18n="label_phone">رقم الهاتف للتواصل:</label>
+          <input type="tel" class="checkout-input" id="checkout-phone-input" placeholder="010XXXXXXXX">
+        </div>
+
+        <!-- Coupon Code Row -->
+        <div class="checkout-field-group">
+          <label class="checkout-field-label" data-i18n="label_coupon">كود الخصم (اختياري):</label>
+          <div class="coupon-input-row">
+            <input type="text" class="checkout-input" id="checkout-coupon-input" placeholder="SABAH970, FIRST970..." style="text-transform:uppercase;">
+            <button type="button" class="btn-apply-coupon" onclick="applyCouponInput()">
+              <span data-i18n="btn_apply_code">تطبيق</span>
+            </button>
+          </div>
+          <div id="coupon-applied-feedback" style="font-size:0.75rem;margin-top:4px;display:none;"></div>
+        </div>
+
+        <!-- Itemized Cart Summary -->
+        <div class="checkout-summary-box">
+          <div id="checkout-items-list" style="margin-bottom:12px;border-bottom:1px solid var(--border-subtle);padding-bottom:8px;">
+            <!-- Rendered by JS -->
+          </div>
+          <div class="summary-row">
+            <span data-i18n="summary_subtotal">المجموع الفرعي:</span>
+            <span id="summary-subtotal-val">0 ج.م</span>
+          </div>
+          <div class="summary-row" id="summary-delivery-row">
+            <span data-i18n="summary_delivery_fee">خدمة التوصيل:</span>
+            <span id="summary-delivery-val">15 ج.م</span>
+          </div>
+          <div class="summary-row" id="summary-discount-row" style="color:#25d366;display:none;">
+            <span data-i18n="summary_discount">قيمة الخصم:</span>
+            <span id="summary-discount-val">-0 ج.م</span>
+          </div>
+          <div class="summary-row total-row">
+            <span data-i18n="summary_total">الإجمالي النهائي:</span>
+            <span class="total-gold" id="summary-total-val">0 ج.م</span>
+          </div>
+        </div>
+
+        <!-- Payment Method Selection -->
+        <div class="checkout-field-group">
+          <label class="checkout-field-label" data-i18n="label_payment">طريقة الدفع:</label>
+          <div style="display:flex;gap:8px;">
+            <button type="button" class="sheet-chip selected" id="pay-cod-btn" onclick="selectPaymentMethod('cod')">
+              <span data-i18n="pay_cod">كاش عند الاستلام</span>
+            </button>
+            <button type="button" class="sheet-chip" id="pay-card-btn" onclick="selectPaymentMethod('card')">
+              <span data-i18n="pay_card">فيزا / كارت في الفرع</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Checkout Actions -->
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:20px;">
+          <button type="button" class="btn-primary-app" onclick="confirmAndPlaceOrder()" style="padding:14px;font-size:0.95rem;">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+            <span data-i18n="btn_confirm_order">تأكيد الطلب وبدء التحضير لايف</span>
+          </button>
+          <button type="button" class="btn-whatsapp-action" onclick="sendCombinedTrayWhatsApp()" style="padding:12px;font-size:0.9rem;">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/></svg>
+            <span data-i18n="btn_send_wa_direct">أو إرسال الطلب عبر واتساب الكافيه</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Live Order Tracking Timeline Modal -->
+    <div class="tracking-modal" id="tracking-modal" role="dialog" aria-modal="true" onclick="closeOrderTracker()">
+      <div class="tracking-sheet" onclick="event.stopPropagation()">
+        <div class="sheet-drag-handle"></div>
+        <div class="tracking-header">
+          <span class="tracking-order-badge" id="tracking-order-id-badge">طلب #SPOT-9742</span>
+          <h3 style="font-size:1.35rem;font-weight:900;color:#fff;margin-top:6px;" id="tracking-status-headline" data-i18n="track_headline">طلبك بيتحضر في الكافيه</h3>
+          <p style="font-size:0.82rem;color:var(--text-secondary);margin-top:2px;" id="tracking-status-subline">الباريستا يستخلص حبوب البن ويجهز طلبك بعناية</p>
+        </div>
+
+        <!-- Live Countdown ETA Box -->
+        <div class="tracking-eta-box">
+          <div class="eta-title" data-i18n="eta_title">الوقت المتوقع للوصول:</div>
+          <div class="eta-time" id="tracking-eta-timer">22:45</div>
+          <div style="font-size:0.75rem;color:var(--gold-light);margin-top:4px;" id="tracking-mode-indicator">توصيل لحي الجامعة - المنصورة</div>
+        </div>
+
+        <!-- 4-Step Vertical Stepper -->
+        <div class="timeline-stepper">
+          <!-- Step 1: Received -->
+          <div class="timeline-step completed" id="step-track-1">
+            <div class="timeline-node">✓</div>
+            <div class="step-label" data-i18n="step_track1_label">استلمنا طلبك</div>
+            <div class="step-desc" data-i18n="step_track1_desc">تم تأكيد الطلب وإرساله لفرع حي الجامعة</div>
+          </div>
+
+          <!-- Step 2: Preparing -->
+          <div class="timeline-step current" id="step-track-2">
+            <div class="timeline-node">2</div>
+            <div class="step-label" data-i18n="step_track2_label">بيتحضر في الكافيه دلوقتي</div>
+            <div class="step-desc" data-i18n="step_track2_desc">الباريستا يعد مشروباتك الطازجة</div>
+          </div>
+
+          <!-- Step 3: Out for Delivery / Ready -->
+          <div class="timeline-step" id="step-track-3">
+            <div class="timeline-node">3</div>
+            <div class="step-label" id="step-track3-label" data-i18n="step_track3_label">طلبك في الطريق إليك</div>
+            <div class="step-desc" id="step-track3-desc" data-i18n="step_track3_desc">الكابتن في طريقه لعنوانك في المنصورة</div>
+          </div>
+
+          <!-- Step 4: Delivered -->
+          <div class="timeline-step" id="step-track-4">
+            <div class="timeline-node">4</div>
+            <div class="step-label" data-i18n="step_track4_label">تم التسليم وبالهنا والشفا</div>
+            <div class="step-desc" data-i18n="step_track4_desc">استمتع بقهوتك المختصة من +970 سبوت</div>
+          </div>
+        </div>
+
+        <!-- Rider / Barista Contact Action -->
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <a href="https://api.whatsapp.com/send?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%83%D8%A7%D9%81%D9%8A%D9%87%20+970%20SPOT%D8%8C%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AD%D8%A7%D9%84%D8%A9%20%D8%B7%D9%84%D8%A8%D9%8A%20%D8%A7%D9%84%D8%AD%D8%A7%D9%84%D9%8A" 
+             target="_blank" rel="noopener noreferrer" class="btn-whatsapp-action" style="padding:12px;font-size:0.9rem;">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/></svg>
+            <span data-i18n="btn_wa_track">تواصل مع الكافيه عبر واتساب</span>
+          </a>
+          <button type="button" class="btn-secondary-app" onclick="closeOrderTracker()" style="width:100%;padding:10px;">
+            <span data-i18n="btn_close_track">إغلاق ومتابعة في الخلفية</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Product Customization Bottom Sheet Modal -->
+    <div class="modal-bottom-sheet" id="product-bottom-sheet" role="dialog" aria-modal="true" onclick="closeProductSheet()">
+      <div class="sheet-container" onclick="event.stopPropagation()">
+        <div class="sheet-drag-handle"></div>
+        
+        <div class="sheet-product-head">
+          <img src="images/coffee.jpg" alt="Item preview" class="sheet-product-img" id="sheet-img">
+          <div class="sheet-head-info">
+            <h3 class="sheet-title" id="sheet-title">اسم المشروب</h3>
+            <div class="sheet-subtitle" id="sheet-subtitle">التصنيف والنوع</div>
+            <p class="sheet-desc" id="sheet-desc">وصف الصنف ونوتات التحضير.</p>
+          </div>
+        </div>
+
+        <!-- Customization Options -->
+        <div class="sheet-options-block">
+          <div class="sheet-option-title" data-i18n="sheet_milk_title">نوع الحليب المفضل:</div>
+          <div class="sheet-chips-group">
+            <button type="button" class="sheet-chip selected" data-val="whole" data-i18n="milk_whole" onclick="selectMilk('whole', this)">كامل الدسم</button>
+            <button type="button" class="sheet-chip" data-val="skim" data-i18n="milk_skim" onclick="selectMilk('skim', this)">خالي الدسم</button>
+            <button type="button" class="sheet-chip" data-val="oat" data-i18n="milk_oat" onclick="selectMilk('oat', this)">حليب شوفان</button>
+            <button type="button" class="sheet-chip" data-val="almond" data-i18n="milk_almond" onclick="selectMilk('almond', this)">حليب لوز</button>
+          </div>
+        </div>
+
+        <div class="sheet-options-block">
+          <div class="sheet-option-title" data-i18n="sheet_sweet_title">درجة الحلاوة:</div>
+          <div class="sheet-chips-group">
+            <button type="button" class="sheet-chip" data-val="none" data-i18n="sweet_none" onclick="selectSweetness('none', this)">بدون سكر</button>
+            <button type="button" class="sheet-chip" data-val="light" data-i18n="sweet_light" onclick="selectSweetness('light', this)">سكر خفيف</button>
+            <button type="button" class="sheet-chip selected" data-val="medium" data-i18n="sweet_medium" onclick="selectSweetness('medium', this)">مظبوط</button>
+            <button type="button" class="sheet-chip" data-val="extra" data-i18n="sweet_extra" onclick="selectSweetness('extra', this)">حلو إضافي</button>
+          </div>
+        </div>
+
+        <!-- Sheet Actions -->
+        <div class="sheet-actions">
+          <button type="button" class="btn-sheet-wa" onclick="orderActiveProductViaWhatsApp()">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/></svg>
+            <span data-i18n="sheet_confirm_btn">تأكيد والطلب عبر واتساب</span>
+          </button>
+          <button type="button" class="btn-secondary-app" onclick="closeProductSheet()" style="width:100%;">
+            <span data-i18n="sheet_close_btn">إغلاق النافذة</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Toast Notification -->
+    <div id="mobile-toast" class="mobile-toast" role="status" aria-live="polite"></div>
+
+    <!-- Bottom Navigation Bar (5 Thumb-Friendly Tabs with Coffee Lab Centerpiece) -->
+    <nav class="bottom-nav-bar" aria-label="شريط التنقل الرئيسي">
+      
+      <!-- Tab 1: Home -->
+      <div class="nav-tab-item active" data-tab="home">
+        <span class="nav-tab-icon">
+          <svg class="icon-svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        </span>
+        <span class="nav-tab-label" data-i18n="nav_home">الرئيسية</span>
+      </div>
+
+      <!-- Tab 2: Menu -->
+      <div class="nav-tab-item" data-tab="menu">
+        <span class="nav-tab-icon">
+          <svg class="icon-svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M2 21h18v-2H2v2zm2-4h10V5H4v12zm14-8h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2V9zm-2-2h4a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4h-4V7z"/></svg>
+        </span>
+        <span class="nav-tab-label" data-i18n="nav_menu">المنيو</span>
+      </div>
+
+      <!-- Tab 3: Coffee Lab (Featured Center Tab) -->
+      <div class="nav-tab-item nav-tab-featured" data-tab="lab">
+        <span class="nav-tab-icon-featured">
+          <svg class="icon-svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M19 19a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9.82a2 2 0 0 1 .59-1.42l4.82-4.82A2 2 0 0 1 11.83 3h.34a2 2 0 0 1 1.42.58l4.82 4.82c.38.38.59.89.59 1.42V19zM9 13v2h6v-2H9z"/></svg>
+        </span>
+        <span class="nav-tab-label" data-i18n="nav_lab">اصنع مشروبك</span>
+      </div>
+
+      <!-- Tab 4: Offers -->
+      <div class="nav-tab-item" data-tab="offers">
+        <span class="nav-tab-icon">
+          <svg class="icon-svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+        </span>
+        <span class="nav-tab-label" data-i18n="nav_offers">العروض</span>
+      </div>
+
+      <!-- Tab 5: Profile & Store -->
+      <div class="nav-tab-item" data-tab="profile">
+        <span class="nav-tab-icon">
+          <svg class="icon-svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </span>
+        <span class="nav-tab-label" data-i18n="nav_profile">الفرع وحسابي</span>
+      </div>
+
+    </nav>
+
+  </div>
+
+  <!-- Runtime JS -->
+  <script src="app.js"></script>
+</body>
+</html>
